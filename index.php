@@ -30,6 +30,11 @@
         <form method = "post">
             <div class = "container-inputs">
                 
+                <label for="texto"> ID_cliente: </label>
+                <input type = "text" name = "id_cliente">
+                <br/>
+                <br/>
+
                 <label for="texto"> Nombre del Cliente: </label>
                 <input type = "text" name = "nombre_cliente">
                 <br/>
@@ -55,8 +60,12 @@
                 <br/>
                 <br/>
             
-                <input type="submit" name="Guardar">
+                <input type="submit" name="Guardar" value="Guardar">
                 <p></p>
+
+                <input type="submit" name="Eliminar" value="Eliminar">
+                <p></p>
+                
 
             </div>
         </form>
@@ -68,19 +77,31 @@
 
         if(isset($_POST['Guardar'])){
 
+            $id_cliente = $_POST['id_cliente'];
             $nombre = $_POST['nombre_cliente'];
             $ap_paterno = $_POST['ap_paterno'];
             $ap_materno = $_POST['ap_materno'];
             $no_celular = $_POST['no_celular'];
             $id_direccion = $_POST['id_direccion'];
 
-            $insertDates = "INSERT INTO clientes VALUES('', '$nombre', '$ap_paterno', '$ap_materno', '$no_celular', '$id_direccion')";
+            $insertDates = "INSERT INTO clientes VALUES('$id_cliente', '$nombre', '$ap_paterno', '$ap_materno', '$no_celular', '$id_direccion')";
             
             $runInsert  = mysqli_query($coneccion, $insertDates); 
 
-
         }
         ?>
+
+        <?php
+        if(isset($_POST['Eliminar'])){
+            
+            $id_cliente = $_POST['id_cliente'];
+            
+            $sql = "DELETE FROM clientes WHERE id_cliente='$id_cliente'";
+            $stmt = mysqli_query($coneccion, $sql);
+        
+        }
+        ?>
+    
 
     </body>
 </html>

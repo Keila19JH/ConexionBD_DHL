@@ -1,0 +1,16 @@
+<!-- var_dump($coneccion); -->>    // debuguear 
+
+<?php
+
+            if(isset($_POST['Guardar'])){
+                    $nombre = $_POST['nombre_cliente'];
+                    $ap_paterno = $_POST['ap_paterno'];
+                    $ap_materno = $_POST['ap_materno'];
+                    $no_celular = $_POST['no_celular'];
+                    $id_direccion = $_POST['id_direccion'];
+
+                $insertarDatos = "INSERT INTO clientes VALUES('', '$nombre', '$ap_pater', '$ap_materno', '$no_celular', '$id_direccion')";
+
+
+            }
+?>
